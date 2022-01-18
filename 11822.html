@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			body{
+				margin-top:30px;
+			}
+			.wrapper{
+				width:50%;
+				height:500px;
+				margin:auto;
+				overflow:hidden;
+				border:5px solid black;
+			}
+			.box{
+				margin:auto;
+				width:100%;
+				height:100%;
+			}
+			#one{
+				flex-direction:column;
+				justify-content:center;
+			}
+			.innerbox{
+				width:100%;
+				display:flex;
+				flex-direction:column;
+				text-align:center;
+				justify-content:center;
+			}
+			#oneh1{
+			}
+			#oneh1 p{
+				font-size:70px;
+			}
+			#oneh2{
+			}
+			#oneh2 p{
+				font-size:32px;
+			}
+			#oneo1{
+				margin-top:30px;
+			}
+			#oneo1 button{
+				font-size:32px;
+				width:60%;
+				margin:auto;
+				border:none;
+				background:none;
+			}
+			#oneo1 button:hover{
+				color:red;
+				cursor:pointer;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<div id="one" class="box" style="display:flex;">
+				<div class="title-header">
+					<div id="oneh1" class="innerbox">
+						<p>A Cool Title</p>
+					</div>
+					<div id="oneh2" class="innerbox">
+						<p>By: Anthony Aruanna</p>
+					</div>
+				</div>
+				<div class="title-options">
+					<div id="oneo1" class="innerbox">
+						<button>PLAY</button>
+						<button>OPTIONS</button>
+					</div>
+				</div> 
+			</div>
+			<div id="two" class="box" style="display:none;">
+				<div class="title-header">
+					<div id="oneh1" class="innerbox">
+						<p>Box 2</p>
+					</div>
+				</div>
+			</div>
+			<div id="three" class="box" style="display:none;">
+				<div class="title-header">
+					<div id="oneh1" class="innerbox">
+						<p>Box 3</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+		</script>
+	</body>
+</html>
