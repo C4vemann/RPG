@@ -1,0 +1,20 @@
+characters = [
+	{
+		name:"Anthony",
+		health:100,
+		maxHealth:100,
+		attack:10
+	},
+	{
+		name:"Tyler",
+		health:100,
+		maxHealth:100,
+		attack:10
+	},
+	{
+		name:"Ron",
+		health:100,
+		maxHealth:100,
+		attack:10
+	}
+];

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			body{
+				margin-top:30px;
+			}
+			.wrapper{
+				width:50%;
+				height:500px;
+				margin:auto;
+				overflow:hidden;
+				border:5px solid black;
+			}
+			.box{
+				margin:auto;
+				width:100%;
+				height:100%;
+			}
+			#one{
+				flex-direction:column;
+				justify-content:center;
+			}
+			.innerbox{
+				width:100%;
+				display:flex;
+				flex-direction:column;
+				text-align:center;
+				justify-content:center;
+			}
+			#oneh1{
+			}
+			#oneh1 p{
+				font-size:70px;
+			}
+			#oneh2{
+			}
+			#oneh2 p{
+				font-size:32px;
+			}
+			#oneo1{
+				margin-top:30px;
+			}
+			#oneo1 button{
+				font-size:32px;
+				width:60%;
+				margin:auto;
+				border:none;
+				background:none;
+			}
+			#oneo1 button:hover{
+				color:red;
+				cursor:pointer;
+			}
+			#two{
+				justify-content:space-around;
+				border:1px solid black;
+			}
+			.player-box{
+				height: 400px;
+				width: 300px;
+				border: 1px solid black;
+				text-align: center;
+			}
+			#attack-button{
+				font-size: 32px;
+				border: 1px solid black;
+				background: black;
+				color: white;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<div id="one" class="box" style="display:flex;">
+				<div class="title-header">
+					<div id="oneh1" class="innerbox">
+						<p>A Cool Title</p>
+					</div>
+					<div id="oneh2" class="innerbox">
+						<p>By: Anthony Aruanna</p>
+					</div>
+				</div>
+				<div class="title-options">
+					<div id="oneo1" class="innerbox">
+						<button id="play">PLAY</button>
+						<button>OPTIONS</button>
+					</div>
+				</div> 
+			</div>
+			<div id="two" class="box" style="display:none;">
+				<div id="player1" class="player-box">
+					<h1 id="player1Name" class="player-name"></h1>
+					<h2 id="player1Health" class="player-health"></h2>
+					<h2 id="player1Attack" class="player-attack"></h2>
+					<img id="player1pic" class="player-pic" src=""/>
+				</div>
+				<div id="player2" class="player-box">
+					<h1 id="player2Name" class="player-name"></h1>
+					<h2 id="player2Health" class="player-health"></h2>
+					<h2 id="player2Attack" class="player-attack"></h2>
+					<img id="player2pic" class="player-pic" src=""/>
+				</div>
+				<div id="options">
+					<button id="attack-button">ATTACK</button>
+				</div>
+			</div>
+			<div id="three" class="box" style="display:none;">
+				<div class="title-header">
+					<div id="oneh1" class="innerbox">
+						<p>Box 3</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="charactersJson.json"></script>
+		<script>
+			let title = document.getElementById("one");
+			let main = document.getElementById("two");
+
+			window.onload = () =>{
+				setScene();
+			}
+			
+			function setScene(){
+				setPlayer(document.getElementById("player1"),characters[0]);
+				setPlayer(document.getElementById("player2"),characters[1]);
+			}
+			document.getElementById("play").addEventListener("click", () => {
+				title.style.display = "none";
+				main.style.display = "flex";
+			});
+			document.getElementById("attack-button").onclick = () => {
+				attack(characters[0],characters[1]);
+				setScene();
+			}
+			function setPlayer(place, player){
+				place.getElementsByClassName("player-name")[0].innerText = player.name;
+				place.getElementsByClassName("player-health")[0].innerText = "Health:" + player.health + "/" + player.maxHealth;
+				place.getElementsByClassName("player-attack")[0].innerText = "Attack: " + player.attack + "/" + player.attack;
+				if(player.health > 50){
+					place.getElementsByClassName("player-pic")[0].src = "./full_health.png";
+				}
+				if(player.health <= 50 && player.health > 0){
+					place.getElementsByClassName("player-pic")[0].src = "./half_health.png";
+				}
+				if(player.health == 0){
+					place.getElementsByClassName("player-pic")[0].src = "./empty_health.png";
+				}
+
+			}
+			function attack(p1, p2){
+				p2.health = p2.health - p1.attack;
+			}
+
+		</script>
+	</body>
+</html>
