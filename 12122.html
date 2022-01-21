@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+		</style>
+	</head>
+	<body>
+		<button id="play-button">PLAY</button>
+		<button id="pause-button">PAUSE</button>
+		<button id="unpause-button">UNPAUSE</button>
+		<button id="end-button">END</button>
+		<button id="new-game-button">NEW GAME</button>
+
+		<h1 id="current-state"></h1>
+		<h2 id="count"></h2>
+
+		<script>
+			var states = {
+				0:"NEW",
+				1:"READY",
+				2:"RUNNING",
+				3:"WAITING",
+				4:"TERMINATED"
+			};
+
+			var currentState;
+			var count;
+			var interval;
+
+			window.onload = newState();
+			
+			function newState(){
+				//load in outside data i guess
+				currentState = states[1];
+				count = 0;
+				document.getElementById("current-state").innerText = currentState;
+				document.getElementById("count").innerText = count;
+			}
+
+			function a(){
+				count++;
+				document.getElementById("count").innerText = count;
+			}
+	
+			document.getElementById("play-button").addEventListener("click", () => {
+				currentState = states[2];
+				document.getElementById("current-state").innerText = currentState;
+				interval = setInterval(a,1000);
+			});
+			
+			document.getElementById("pause-button").addEventListener("click", () => {
+				currentState = states[3];
+				document.getElementById("current-state").innerText = currentState;
+				clearInterval(interval);
+			});
+			
+			document.getElementById("unpause-button").addEventListener("click", () => {
+				currentState = states[2];
+				document.getElementById("current-state").innerText = currentState;
+				interval = setInterval(a,1000);
+			});
+
+			document.getElementById("end-button").addEventListener("click", () => {
+				currentState = states[4];
+				document.getElementById("current-state").innerText = currentState;
+				clearInterval(interval);
+			});
+			
+			document.getElementById("new-game-button").addEventListener("click", () => {
+				currentState = states[1];
+				document.getElementById("current-state").innerText = currentState;
+				clearInterval(interval);
+				newState();
+			});
+		</script>
+	</body>
+</html>
