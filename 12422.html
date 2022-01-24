@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			
+			#characterSelection{
+				flex-wrap:wrap;
+				justify-content:center;
+			}
+			.playerCard{
+				text-align:center;
+				margin:0 10px;
+				border:3px solid black;
+			}
+			.playerCard:hover{
+				cursor:pointer;
+			}
+			.playerCard img{
+				width:200px;
+				height:200px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="characterSelection" style="display:flex">
+			<div class="playerCard">
+				<h1 id="player1Name" class="player-name">Anthony</h1>
+				<h2 id="player1Health" class="player-health">100</h2>
+				<h2 id="player1Attack" class="player-attack">10</h2>
+				<img id="player1pic" class="player-pic" src="./Anthony.png"/>
+			</div>
+			<div class="playerCard">
+				<h1 id="player1Name" class="player-name">Tyler</h1>
+				<h2 id="player1Health" class="player-health">100</h2>
+				<h2 id="player1Attack" class="player-attack">10</h2>
+				<img id="player1pic" class="player-pic" src="./Tyler.png"/>
+			</div>
+			<div class="playerCard">
+				<h1 id="player1Name" class="player-name">Ron</h1>
+				<h2 id="player1Health" class="player-health">100</h2>
+				<h2 id="player1Attack" class="player-attack">10</h2>
+				<img id="player1pic" class="player-pic" src="./Ron.png"/>
+			</div>
+		</div>
+		<script src="./charactersJson.json"></script>
+		<script src="./Player.js"></script>
+		<script>
+			const p1 = new Player(characters[0]);
+			const p2 = new Player(characters[1]);
+		</script>
+	</body>
+</html>
