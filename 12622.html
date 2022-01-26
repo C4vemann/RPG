@@ -107,6 +107,16 @@
 				width:100%;
 				height:50%;
 			}
+			.outcome-header{
+				text-align:center;
+			}
+			#outcome-header-text{
+				text-align:center;
+			}
+			#playAgainButton{
+				margin:auto;
+				font-size:24px;
+			}
 		</style>
 	</head>
 
@@ -176,28 +186,38 @@
 				</div>
 			</div>
 			<div id="three" class="box" style="display:none;">
-				<div class="title-header">
-					<div id="oneh1" class="innerbox">
-						<p>Box 3</p>
-					</div>
+				<div class="outcome-header">
+					<h1 id="outcome-header-text"></h1>
+					<button id="playAgainButton">Play Again?</button>
+				</div>
+				<div class="outcome-body">
 				</div>
 			</div>
 		</div>
 
 		<script src="charactersJson.json"></script>
+
 		<script>
 			let title = document.getElementById("one");
 			let characterSelections = document.getElementById("characterSelection");
 			let main = document.getElementById("two");
-
+			let outcomeScreen = document.getElementById("three");
+			
 			var players = new Array();
 			var playerLimit = 2;
 
+			document.getElementById("playAgainButton").addEventListener("click", () => {
+				players = new Array();
+				document.getElementById("character-selection-header-text").innerText = "Choose Player " + (players.length + 1);
+				outcomeScreen.style.display = "none";
+				characterSelection.style.display = "block";
+			});
 
 			document.getElementById("play").addEventListener("click", () => {
 				title.style.display = "none";
 				characterSelection.style.display = "block";
 			});
+
 			document.getElementById("attack-button").onclick = () => {
 				attack(players[0],players[1]);
 				setPlayers(players);
@@ -208,18 +228,27 @@
 				place.getElementsByClassName("player-health")[0].innerText = "Health:" + player.health + "/" + player.maxHealth;
 				place.getElementsByClassName("player-attack")[0].innerText = "Attack: " + player.attack + "/" + player.attack;
 				place.getElementsByClassName("player-pic")[0].src = player.image;
-
 			}
+
 			function attack(p1, p2){
 				if((p2.health = p2.health - p1.attack) <= 0){
-					console.log("Dead");
-				} else{
-					console.log("Alive");
+					outcome(p1,p2);
 				}
 			}
+
+			function outcome(p1,p2){
+				main.style.display = "none";
+				outcomeScreen.style.display = "block";
+				document.getElementById("outcome-header-text").innerText = p1.name + " is VICTORIOUS!";
+			}
+
 			document.getElementsByClassName("playerCard")[0].addEventListener("click", () => {
 				if(players.length != playerLimit){
-					players.push(lookup(document.getElementById("player1Name").innerText));
+
+					// we are now pushing a new Player object onto the players list rather than a reference to the characters list 
+					//i have to figure out to this properly with a class
+					//*****BUG******
+					players.push(new Player(lookup(document.getElementById("player1Name").innerText)));
 					document.getElementById("character-selection-header-text").innerText = "Choose Player " + (players.length + 1);
 
 					if(players.length == playerLimit){
@@ -239,7 +268,6 @@
 					}
 				} 
 			});
-
 
 			document.getElementsByClassName("playerCard")[2].addEventListener("click", () => {
 				if(players.length != playerLimit){
