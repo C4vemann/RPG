@@ -71,12 +71,16 @@
 			}
 
 			.character-selection-header{
-				text-align:center;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				width:100%;
+				height: 20%;
 			}
 			.character-selection-body{
 				display:flex;
 				justify-content:center;
+				height: 60%;
 			}
 			.playerCard{
 				text-align:center;
@@ -108,12 +112,27 @@
 				height:50%;
 			}
 			.outcome-header{
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
 				text-align:center;
+				height: 20%;
+			}
+			.outcome-body{
+				display: flex;
+				justify-content: space-around;
+				height: 70%;
+			}
+			.outcome-body-elements{
+				width: 45%;
+				border: 2px solid black;
+				text-align: center;
 			}
 			#outcome-header-text{
 				text-align:center;
 			}
-			#playAgainButton{
+			.outcome-option-button{
 				margin:auto;
 				font-size:24px;
 			}
@@ -138,7 +157,7 @@
 					</div>
 				</div> 
 			</div>
-			<div id="characterSelection" style="display:none">
+			<div id="characterSelection" class="box" style="display:none">
 				<div class="character-selection-header">
 					<h1 id="character-selection-header-text">Choose Player 1</h1>
 				</div>
@@ -188,15 +207,29 @@
 			<div id="three" class="box" style="display:none;">
 				<div class="outcome-header">
 					<h1 id="outcome-header-text"></h1>
-					<button id="playAgainButton">Play Again?</button>
+					<div id="outcome-header-buttons">
+						<button id="playAgainButton" class="outcome-option-button">Play Again</button>
+						<button id="mainMenuButton" class="outcome-option-button">Main Menu</button>
+					</div>
 				</div>
 				<div class="outcome-body">
+					<div id="outcome-body-player1" class="outcome-body-elements">
+						<h1 id="outcome-player1-name"></h1>
+						<h2 id="outcome-player1-hits"></h2>
+						<h2 id="outcome-player1-misses"></h2>
+					</div>
+					<div id="outcome-body-player2" class="outcome-body-elements">
+						<h1 id="outcome-player2-name"></h1>
+						<h2 id="outcome-player2-hits"></h2>
+						<h2 id="outcome-player2-misses"></h2>
+					</div>
 				</div>
 			</div>
 		</div>
 
 		<script src="charactersJson.json"></script>
-
+		<script src="Player.js"></script>
+		<script src="eventFunctions.js"></script>
 		<script>
 			let title = document.getElementById("one");
 			let characterSelections = document.getElementById("characterSelection");
@@ -206,79 +239,29 @@
 			var players = new Array();
 			var playerLimit = 2;
 
-			document.getElementById("playAgainButton").addEventListener("click", () => {
-				players = new Array();
-				document.getElementById("character-selection-header-text").innerText = "Choose Player " + (players.length + 1);
-				outcomeScreen.style.display = "none";
-				characterSelection.style.display = "block";
-			});
-
-			document.getElementById("play").addEventListener("click", () => {
-				title.style.display = "none";
-				characterSelection.style.display = "block";
-			});
-
-			document.getElementById("attack-button").onclick = () => {
-				attack(players[0],players[1]);
-				setPlayers(players);
-			}
+			
 
 			function setPlayer(place, player){
 				place.getElementsByClassName("player-name")[0].innerText = player.name;
 				place.getElementsByClassName("player-health")[0].innerText = "Health:" + player.health + "/" + player.maxHealth;
 				place.getElementsByClassName("player-attack")[0].innerText = "Attack: " + player.attack + "/" + player.attack;
-				place.getElementsByClassName("player-pic")[0].src = player.image;
+				place.getElementsByClassName("player-pic")[0].src = player.pic;
 			}
-
-			function attack(p1, p2){
-				if((p2.health = p2.health - p1.attack) <= 0){
-					outcome(p1,p2);
-				}
-			}
+	
 
 			function outcome(p1,p2){
 				main.style.display = "none";
 				outcomeScreen.style.display = "block";
 				document.getElementById("outcome-header-text").innerText = p1.name + " is VICTORIOUS!";
+				document.getElementById("outcome-player1-name").innerText = p1.name;
+				document.getElementById("outcome-player1-hits").innerText = "Hits: " + p1.hits + "/" + (p1.hits + p1.misses);
+				document.getElementById("outcome-player1-misses").innerText = "Misses: " + p1.misses + "/" + (p1.hits + p1.misses);
+				document.getElementById("outcome-player2-name").innerText = p2.name;
+				document.getElementById("outcome-player2-hits").innerText = "Hits: " + p2.hits + "/" + (p2.hits + p2.misses);
+				document.getElementById("outcome-player2-misses").innerText = "Misses: " + p2.misses + "/" + (p2.hits + p2.misses);
 			}
 
-			document.getElementsByClassName("playerCard")[0].addEventListener("click", () => {
-				if(players.length != playerLimit){
-
-					// we are now pushing a new Player object onto the players list rather than a reference to the characters list 
-					//i have to figure out to this properly with a class
-					//*****BUG******
-					players.push(new Player(lookup(document.getElementById("player1Name").innerText)));
-					document.getElementById("character-selection-header-text").innerText = "Choose Player " + (players.length + 1);
-
-					if(players.length == playerLimit){
-						nextPart(players);
-					}
-				}
-				
-			});
-
-			document.getElementsByClassName("playerCard")[1].addEventListener("click", () => {
-				if(players.length != playerLimit){
-					players.push(lookup(document.getElementById("player2Name").innerText));
-					document.getElementById("character-selection-header-text").innerText = "Choose Player " + (players.length + 1);	
-					
-					if(players.length == playerLimit){
-						nextPart();
-					}
-				} 
-			});
-
-			document.getElementsByClassName("playerCard")[2].addEventListener("click", () => {
-				if(players.length != playerLimit){
-					players.push(lookup(document.getElementById("player3Name").innerText));
-					document.getElementById("character-selection-header-text").innerText = "Choose Player " + (players.length + 1);
-					
-					if(players.length == playerLimit){
-						nextPart();
-					}
-				} 
-			});
+			
 
 			function nextPart(){
 				characterSelection.style.display = "none";
@@ -298,6 +281,13 @@
 					}
 				}
 			};
+
+/*			DEPRECIATED
+			function attack(p1, p2){
+				if((p2.health = p2.health - p1.attack) <= 0){
+					outcome(p1,p2);
+				}
+			}*/
 		</script>
 	</body>
 </html>
