@@ -20,4 +20,13 @@ class Player{
 			this.misses++;
 		}
 	}
+
+	//static function lookup(c,chs){
+	//	for(let char of chs){
+	//		if(char.name == c){
+	//			return char;
+	//		}
+	//	}
+	//};
+
 }

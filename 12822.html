@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			#characterSelection{
+				background: url("./background4.png");
+				background-size: cover;
+			}
+			.box{
+				margin:auto;
+				width:100%;
+				height:100%;
+			}
+			.character-selection-header{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width:100%;
+				height: 20%;
+			}
+			.character-selection-body{
+				display:flex;
+				justify-content:center;
+				height: 60%;
+			}
+			.playerCard{
+				text-align:center;
+				margin:0 10px;
+				border:3px solid black;
+			}
+			.playerCard:hover{
+				cursor:pointer;
+				background:yellow;
+			}
+			.playerCard img{
+				width:200px;
+				height:200px;
+			}
+		</style>
+	</head>
+	<body id="body">
+		<script src="Player.js"></script>
+		<script src="charactersJson.json"></script>
+		<script src="CharacterSelection.js"></script>
+		<script>
+			let body = document.getElementById("body");
+
+			body.appendChild(new CharacterSelection(characters).element);
+
+			
+		</script>
+	</body>
+</html>
