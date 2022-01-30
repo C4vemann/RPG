@@ -1,3 +1,4 @@
+//should probably combine this class and the PlayerCard.js class
 class Player{
 	constructor(playerinfo){
 		this.name = playerinfo.name;
@@ -13,7 +14,7 @@ class Player{
 	attacking(player){
 		if(this.attack > 0){
 			if((player.health = player.health - this.attack) <= 0){
-				outcome(this,player);
+				MyGame.changeState("TERMINATED");
 			}
 			this.hits++;
 		} else{
@@ -21,12 +22,12 @@ class Player{
 		}
 	}
 
-	//static function lookup(c,chs){
-	//	for(let char of chs){
-	//		if(char.name == c){
-	//			return char;
-	//		}
-	//	}
-	//};
+	static lookup(c,chs){
+		for(let char of chs){
+			if(char.name == c){
+				return char;
+			}
+		}
+	};
 
 }
