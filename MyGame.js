@@ -46,7 +46,6 @@ class MyGame{
 	}
 
 	static changeState(state){
-		console.log(MyGame.currentState);
 		if(state == MyGame.states[0]){
 			MyGame.currentState = state;
 			MyGame.currentScreen.element.style = "display:none;";
@@ -79,7 +78,6 @@ class MyGame{
 			MyGame.currentScreen.element.style = "display:block;";
 		} else{
 		}
-		console.log(MyGame.currentState);
 	}
 
 

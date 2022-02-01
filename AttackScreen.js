@@ -32,6 +32,7 @@ class AttackScreen{
 		sub.innerText = "ATTACK";
 		sub.onclick = () => {
 			MyGame.players[0].attacking(MyGame.players[1]);
+			console.log("clicked");
 		};
 
 		main.appendChild(sub);
@@ -66,8 +67,8 @@ class AttackScreen{
 	}
 
 	setPlayers(players){
-		this.element.firstChild.appendChild(new PlayerCard(MyGame.players[0]).element);
-		this.element.firstChild.appendChild(new PlayerCard(MyGame.players[1]).element);
+		this.element.firstChild.appendChild(MyGame.players[0].element);
+		this.element.firstChild.appendChild(MyGame.players[1].element);
 	}
 
 	resetPlayers(){

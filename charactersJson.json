@@ -1,23 +1,14 @@
 characters = [
 	{
 		name:"Anthony",
-		health:100,
-		maxHealth:100,
-		attack:10,
 		image:"./Anthony.png",
 	},
 	{
 		name:"Tyler",
-		health:100,
-		maxHealth:100,
-		attack:10,
 		image:"./Tyler.png",
 	},
 	{
 		name:"Ron",
-		health:100,
-		maxHealth:100,
-		attack:10,
 		image:"./Ron.png",
 	}
 ];
