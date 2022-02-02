@@ -1,22 +1,33 @@
 class CharacterSelectionScreen{
 
 	constructor(characters){
-		this.element = this.init(characters);
+		this.header = new CharacterSelectionHeader("!!!Choose Player 1");
+		this.body = this.initBody(characters);
+
+		this.element = this.init(this.header);
 	}
+
 	
-	init(characters){
-		let output = document.createElement("div");
-		output.id = "characterSelection";
-		output.className = "box";
-		output.style = "display:none;";
+	init(header){
+		let main = document.createElement("div");
+		main.id = "characterSelection";
+		main.className = "box";
 
-		output.appendChild(this.initHeader());
-		output.appendChild(this.initBody());
+		//use this to display element
+		main.style = "display:block;";
 
-		return output;
+
+
+		main.appendChild(header.element);
+
+
+
+		main.appendChild(this.initBody());
+
+		return main;
 	}
 
-	initHeader(){
+	/*initHeader(){
 		let header = document.createElement("div");
 		header.className = "character-selection-header";
 		
@@ -27,9 +38,9 @@ class CharacterSelectionScreen{
 		header.appendChild(el);
 
 		return header;
-	}
+	}*/
 
-	initBody(){
+	initBody(c){
 		let body = document.createElement("div");
 		body.className = "character-selection-body";
 
@@ -38,6 +49,10 @@ class CharacterSelectionScreen{
 		}
 		
 		return body;
+	}
+
+	changeHeaderText(x){
+		this.header.changeHeaderText(x);
 	}
 
 }
