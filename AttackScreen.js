@@ -32,7 +32,6 @@ class AttackScreen{
 		sub.innerText = "ATTACK";
 		sub.onclick = () => {
 			MyGame.players[0].attacking(MyGame.players[1]);
-			console.log("clicked");
 		};
 
 		main.appendChild(sub);

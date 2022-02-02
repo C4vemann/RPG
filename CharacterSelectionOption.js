@@ -12,7 +12,6 @@ class CharacterSelectionOption{
 		card.onclick = () => {
 			if(MyGame.players.length != MyGame.playerLimit){
 				MyGame.players[MyGame.players.length] = new Player(Player.lookup(this.element.id,characters));
-				document.getElementById("character-selection-header-text").innerText = "Choose Player " + (MyGame.players.length + 1);
 				
 				if(MyGame.players.length == MyGame.playerLimit){
 					MyGame.changeState("RUNNING");
