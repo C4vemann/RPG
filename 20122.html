@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<style>
+	</style>
+
+	<body>
+
+		<script>
+			class CharacterSelectionTemp{
+
+				constructor(){
+					this.header = new CharacterSelectionTempHeader("Choose Player 1");
+					this.body = new CharacterSelectionTempBody();
+
+					this.element = this.init(this.header);
+				}
+
+				init(header){
+					let main = document.createElement("div");
+
+					main.appendChild(header.element);
+
+					main.appendChild(this.bodyInit());
+					return main;
+				}
+
+				bodyInit(){
+					let main = document.createElement("div");
+					let sub = document.createElement("h2");
+					sub.innerText = "Character Options";
+					main.appendChild(sub);
+					return main;
+				}
+
+				changeHeaderText(x){
+					this.header.changeHeaderText(x);
+				}
+			}
+
+
+
+
+			class CharacterSelectionTempHeader{
+				constructor(x){
+					this.text = new CharacterSelectionTempHeaderText(x);
+					this.element = this.init(this.text);
+				}
+
+				init(x){
+					let main = document.createElement("div");
+					main.appendChild(x.element);
+					return main;
+				}
+
+				changeHeaderText(x){
+					this.text.changeHeaderText(x);
+				}
+			}
+
+
+
+			class CharacterSelectionTempHeaderText{
+				constructor(x){
+					this.element = this.init(x);
+				}
+				init(x){
+					let main = document.createElement("p");
+					main.innerText = x;
+					return main;
+				}
+
+
+				changeHeaderText(x){
+					this.element.innerText = x;
+				}
+			}
+
+			let x = new CharacterSelectionTemp("LOLOLOL");
+			let body = document.getElementsByTagName("body")[0];
+			body.appendChild(x.element);
+
+
+		</script>
+	</body>
+</html>
