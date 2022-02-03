@@ -1,5 +1,6 @@
 class AttackBody{
 	constructor(){
+		this.playerCards = [];
 		this.element = this.init();
 	}
 
@@ -11,7 +12,8 @@ class AttackBody{
 	}
 
 	addPlayer(x){
-		this.element.appendChild(x.element);
+		this.playerCards[this.playerCards.length] = x.element;
+		this.element.appendChild(this.playerCards[this.playerCards.length-1]);
 	}
 
 	removePlayers(){

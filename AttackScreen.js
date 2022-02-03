@@ -3,7 +3,7 @@ class AttackScreen{
 	static attackScreenLock = 0;
 
 	constructor(){
-		this.header = new CharacterSelectionHeader();
+		this.header = new AttackHeader();
 		this.body = new AttackBody();
 		this.footer = new AttackFooter();
 

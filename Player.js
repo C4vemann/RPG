@@ -14,7 +14,7 @@ class Player{
 	}
 
 	attacking(player){
-		player.health = player.health - 10;
+		player.health = player.health - 100;
 		this.hits++;
 
 		if(player.health <= 0){
@@ -48,10 +48,6 @@ class Player{
 
 	updateCard(){
 		console.log(this);
-	}
-
-	remove(){
-		this.element = null;
 	}
 
 	static lookup(c,chs){
