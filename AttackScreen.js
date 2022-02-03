@@ -1,79 +1,46 @@
 class AttackScreen{
+
+	static attackScreenLock = 0;
+
 	constructor(){
-		this.element = this.init();
+		this.header = new CharacterSelectionHeader();
+		this.body = new AttackBody();
+		this.footer = new AttackFooter();
+
+		this.element = this.init(this.header, this.body, this.footer);
 	}
 
-	init(){
+	init(header,body,footer){
 		let main = document.createElement("div");
 		main.id = "two";
 		main.className = "box";
 		main.style = "display:none;";
 
-		main.appendChild(this.initHeader());
-		main.appendChild(this.initBody());
+		main.appendChild(header.element);
+		main.appendChild(body.element);
+		main.appendChild(footer.element);
 		
 		return main;
 	}
 
-	initHeader(){
-		let main = document.createElement("div");
-		main.id = "player-wrapper";
-
-		return main;
+	changeHeaderText(x){
+		this.header.changeHeaderText(x);
 	}
 
-	initBody(){
-		let main = document.createElement("div");
-		main.id = "options";
-
-		let sub = document.createElement("button");
-		sub.id = "attack-button";
-		sub.className = "options-button";
-		sub.innerText = "ATTACK";
-		sub.onclick = () => {
-			MyGame.players[0].attacking(MyGame.players[1]);
-		};
-
-		main.appendChild(sub);
-
-		sub = document.createElement("button");
-		sub.id = "items-button";
-		sub.className = "options-button";
-		sub.innerText = "ITEMS";
-
-		main.appendChild(sub);
-
-		sub = document.createElement("button");
-		sub.id = "run-button";
-		sub.className = "options-button";
-		sub.innerText = "RUN";
-
-		main.appendChild(sub);
-
-		sub = document.createElement("button");
-		sub.id = "pause-button";
-		sub.className = "options-button";
-		sub.innerText = "PAUSE";
-		sub.onclick = () => {
-			console.log("Coming Soon");
-			MyGame.changeState("WAITING");
-		};
-
-		main.appendChild(sub);
-
-
-		return main;
+	addPlayerToField(x){
+		this.body.addPlayer(x);
 	}
-
 	setPlayers(players){
-		this.element.firstChild.appendChild(MyGame.players[0].element);
-		this.element.firstChild.appendChild(MyGame.players[1].element);
+
+		this.changeHeaderText("TURN: " + players[0].name);
+		this.addPlayerToField(players[0]);
+		this.addPlayerToField(players[1]);
 	}
 
-	resetPlayers(){
-		while(this.element.firstChild.firstChild){
-			this.element.firstChild.firstChild.remove();
-		}
+	removePlayerCards(){
+		this.body = new AttackBody();
 	}
+
+
 
 }

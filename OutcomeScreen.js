@@ -64,10 +64,8 @@ class OutcomeScreen{
 	}
 
 	resetOutcome(){
-		console.log(this.element.lastChild.firstChild);
 		while(this.element.lastChild.firstChild){
 			this.element.lastChild.firstChild.remove();
 		}
-		console.log(this.element.lastChild.firstChild); 
 	}
 }

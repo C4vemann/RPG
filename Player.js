@@ -50,6 +50,10 @@ class Player{
 		console.log(this);
 	}
 
+	remove(){
+		this.element = null;
+	}
+
 	static lookup(c,chs){
 		for(let char of chs){
 			if(char.name == c){

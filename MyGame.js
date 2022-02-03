@@ -16,6 +16,7 @@ class MyGame{
 	static outcomeScreen;
 	static pauseScreen;
 
+
 	constructor(){
 		MyGame.players = [];
 		MyGame.playerLimit = 2;
@@ -61,7 +62,8 @@ class MyGame{
 			MyGame.currentState = state;
 			MyGame.currentScreen.element.style = "display:none;";
 			MyGame.currentScreen = MyGame.attackScreen;
-			MyGame.currentScreen.resetPlayers();
+
+	
 			MyGame.currentScreen.setPlayers(MyGame.players);
 			MyGame.currentScreen.element.style = "display:block;";
 		} else if(state == MyGame.states[3]){

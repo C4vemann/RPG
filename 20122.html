@@ -1,3 +1,4 @@
+<!-- //make a function that prevents the user from entering the same playercard id more than once -->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -5,6 +6,7 @@
 	</head>
 
 	<body>
+		<script src="CharacterSelectionBody.js"></script>
 		<script src="CharacterSelectionHeader.js"></script>
 		<script src="CharacterSelectionHeaderText.js"></script>
 		<script src="CharacterSelectionScreen.js"></script>
@@ -18,7 +20,7 @@
 				constructor(){
 					this.header = new CharacterSelectionHeader("****Choose Player 1");
 					
-					this.body = new CharacterSelectionTempBody(characters);
+					this.body = new CharacterSelectionBody(characters);
 
 					this.element = this.init(this.header, this.body);
 				}
@@ -32,13 +34,7 @@
 					return main;
 				}
 
-				bodyInit(){
-					let main = document.createElement("div");
-					let sub = document.createElement("h2");
-					sub.innerText = "Character Options";
-					main.appendChild(sub);
-					return main;
-				}
+
 
 				changeHeaderText(x){
 					this.header.changeHeaderText(x);
@@ -47,26 +43,9 @@
 				addCharacterOption(x,y){
 					this.body.addCharacterCard(x,y);
 				}
-			}
 
-			class CharacterSelectionTempBody{
-				constructor(characters){
-					this.element = this.init(characters);
-
-				}
-
-				init(characters){					
-					let body = document.createElement("div");
-					body.className = "character-selection-body";
-
-					for(let character of characters){
-						body.appendChild(new CharacterSelectionOption(character.name,character.image).element);
-					}
-					return body;
-				}
-
-				addCharacterCard(x,y){
-					this.element.addCharacterCard(x,y);
+				removeCharacterOption(x){
+					this.body.removeCharacterCard(x);
 				}
 			}
 
@@ -77,12 +56,15 @@
 
 
 
-			//let p = new CharacterSelectionScreen(characters);
 
-			let x = new CharacterSelectionTemp(characters);
+
+
+			let p = new CharacterSelectionScreen(characters);
+
+			//let x = new CharacterSelectionTemp(characters);
 
 			let body = document.getElementsByTagName("body")[0];
-			body.appendChild(x.element);
+			body.appendChild(p.element);
 
 
 		</script>
