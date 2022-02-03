@@ -2,6 +2,7 @@ class CharacterSelectionHeader{
 	constructor(x){
 		this.text = new CharacterSelectionHeaderText(x);
 		this.element = this.init(this.text);
+		this.element.className = "character-selection-header"
 	}
 
 	init(x){

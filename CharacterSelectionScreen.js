@@ -1,14 +1,13 @@
 class CharacterSelectionScreen{
 
 	constructor(characters){
-		this.header = new CharacterSelectionHeader("!!!Choose Player 1");
-		this.body = this.initBody(characters);
+		this.header = new CharacterSelectionHeader("dChoose Player 1");
+		this.body = new CharacterSelectionBody(characters);
 
-		this.element = this.init(this.header);
+		this.element = this.init(this.header, this.body);
 	}
-
 	
-	init(header){
+	init(header,body){
 		let main = document.createElement("div");
 		main.id = "characterSelection";
 		main.className = "box";
@@ -20,39 +19,21 @@ class CharacterSelectionScreen{
 
 		main.appendChild(header.element);
 
-
-
-		main.appendChild(this.initBody());
+		main.appendChild(body.element);
 
 		return main;
 	}
 
-	/*initHeader(){
-		let header = document.createElement("div");
-		header.className = "character-selection-header";
-		
-		let el = document.createElement("h1");
-		el.id = "character-selection-header-text";
-		el.innerText = "Choose Player 1";
-		
-		header.appendChild(el);
-
-		return header;
-	}*/
-
-	initBody(c){
-		let body = document.createElement("div");
-		body.className = "character-selection-body";
-
-		for(let c of characters){
-			body.appendChild(new CharacterSelectionOption(c.name,c.image).element);
-		}
-		
-		return body;
-	}
-
 	changeHeaderText(x){
 		this.header.changeHeaderText(x);
+	}
+
+	addCharacterOption(x,y){
+		this.body.addCharacterCard(x,y);
+	}
+
+	removeCharacterOption(x){
+		this.body.removeCharacterCard(x);
 	}
 
 }
