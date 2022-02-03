@@ -1,7 +1,7 @@
 class CharacterSelectionScreen{
 
 	constructor(characters){
-		this.header = new CharacterSelectionHeader("dChoose Player 1");
+		this.header = new CharacterSelectionHeader("Choose Player 1");
 		this.body = new CharacterSelectionBody(characters);
 
 		this.element = this.init(this.header, this.body);
