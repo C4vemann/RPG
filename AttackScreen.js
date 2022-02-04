@@ -34,7 +34,6 @@ class AttackScreen{
 		}
 	}
 	removePlayerCards(players){
-		//this.body.removePlayerCard(players);
 		for(let player of players){
 			this.body.removePlayerCard(player);
 		}

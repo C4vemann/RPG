@@ -63,6 +63,7 @@
 			.player-box{
 				border: 1px solid black;
 				text-align: center;
+				width:40%;
 			}
 			.player-box img{
 				width:100%;
