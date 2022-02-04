@@ -142,4 +142,13 @@
 				background: url("background3.png");
 				background-size: cover;
 			}
+			.attack-header{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width:100%;
+				font-size: 30px;
+				font-weight: bolder;
+			
+			}
 		

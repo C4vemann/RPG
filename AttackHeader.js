@@ -2,7 +2,7 @@ class AttackHeader{
 	constructor(x){
 		this.text = new AttackHeaderText(x);
 		this.element = this.init(this.text);
-		//this.element.className = "character-selection-header"
+		this.element.className = "attack-header";
 	}
 
 	init(x){

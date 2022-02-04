@@ -27,18 +27,17 @@ class AttackScreen{
 		this.header.changeHeaderText(x);
 	}
 
-	addPlayerToField(x){
-		this.body.addPlayer(x);
+	addPlayerCards(players){
+		this.changeHeaderText("TURN: Player 1");
+		for(let player of players){
+			this.body.addPlayer(player);
+		}
 	}
-	setPlayers(players){
-
-		this.changeHeaderText("TURN: " + players[0].name);
-		this.addPlayerToField(players[0]);
-		this.addPlayerToField(players[1]);
-	}
-
-	removePlayerCards(){
-		this.body = new AttackBody();
+	removePlayerCards(players){
+		//this.body.removePlayerCard(players);
+		for(let player of players){
+			this.body.removePlayerCard(player);
+		}
 	}
 
 

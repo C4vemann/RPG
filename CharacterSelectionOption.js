@@ -10,12 +10,13 @@ class CharacterSelectionOption{
 		card.className = "playerCard";
 
 		card.onclick = () => {
-			if(MyGame.players.length != MyGame.playerLimit){
-				MyGame.players[MyGame.players.length] = new Player(Player.lookup(this.element.id,characters));
-				MyGame.characterSelectionScreen.changeHeaderText("Choose Player " + (MyGame.players.length + 1));
-				if(MyGame.players.length == MyGame.playerLimit){
+			if(MyGame.playersCount != MyGame.playerLimit){
+				MyGame.players[MyGame.playerCount] = new Player(Player.lookup(this.element.id,characters));
+				MyGame.playerCount++;
+				if(MyGame.playerCount == MyGame.playerLimit){
 					MyGame.changeState("RUNNING");
-				}
+				} 
+				MyGame.characterSelectionScreen.changeHeaderText("Choose Player " + (MyGame.playerCount + 1));
 			}
 		};
 

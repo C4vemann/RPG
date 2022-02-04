@@ -19,6 +19,7 @@ class MyGame{
 
 	constructor(){
 		MyGame.players = [];
+		MyGame.playerCount = 0;
 		MyGame.playerLimit = 2;
 		MyGame.currentState = MyGame.states[0];
 
@@ -53,18 +54,26 @@ class MyGame{
 			MyGame.currentScreen = MyGame.titleScreen;
 			MyGame.currentScreen.element.style = "display:flex;";
 		} else if(state == MyGame.states[1]){
-			MyGame.players = [];
+			if(MyGame.playerCount != 0){
+				MyGame.attackScreen.removePlayerCards(MyGame.players);
+				MyGame.players = [];
+				MyGame.playerCount = 0;
+			}
+
 			MyGame.currentState = state;
 			MyGame.currentScreen.element.style = "display:none;";
 			MyGame.currentScreen = MyGame.characterSelectionScreen;
+
+			MyGame.currentScreen.changeHeaderText("Choose Player " + (MyGame.playerCount+1));
+
+
 			MyGame.currentScreen.element.style = "display:block;";
 		} else if(state == MyGame.states[2]){
 			MyGame.currentState = state;
 			MyGame.currentScreen.element.style = "display:none;";
 			MyGame.currentScreen = MyGame.attackScreen;
+			MyGame.currentScreen.addPlayerCards(MyGame.players);
 
-	
-			MyGame.currentScreen.setPlayers(MyGame.players);
 			MyGame.currentScreen.element.style = "display:block;";
 		} else if(state == MyGame.states[3]){
 			/*MyGame.currentState = state;
