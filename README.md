@@ -1,3 +1,2 @@
 # RPG
-
-do what i did for attack screen to outcome screen almost there!!!
+now i think i can add the player turn functionality
