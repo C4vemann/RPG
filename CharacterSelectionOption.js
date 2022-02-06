@@ -7,7 +7,7 @@ class CharacterSelectionOption{
 		
 		let card = document.createElement("div");
 		card.id = x;
-		card.className = "playerCard";
+		card.className = "player-card";
 
 		card.onclick = () => {
 			if(MyGame.playersCount != MyGame.playerLimit){

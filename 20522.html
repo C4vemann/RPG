@@ -1,0 +1,54 @@
+<!-- //make a function that prevents the user from entering the same playercard id more than once -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="myStyles.css" rel="stylesheet"/>
+	</head>
+
+	<body>
+		<script src="./Components/Header.js"></script>
+		<script src="./Components/Text.js"></script>
+		<script src="./Components/Button/PlayButton.js"></script>
+		<script src="./Components/Button/OptionButton.js"></script>
+		<script src="./Components/Button/ItemButton.js"></script>
+		<script src="./Components/Button/RunButton.js"></script>
+		<script src="./Components/Button/PauseButton.js"></script>
+		<script src="./Components/Button/MainMenuButton.js"></script>
+		<script src="./Components/Button/AttackButton.js"></script>
+
+		<script src="./OutcomeScreen/OutcomeScreen.js"></script>
+		<script src="./OutcomeScreen/OutcomeHeader.js"></script>
+		<script src="./OutcomeScreen/OutcomeHeaderText.js"></script>
+		<script src="./OutcomeScreen/OutcomeSubHeader.js"></script>
+		<script src="./OutcomeScreen/OutcomeBody.js"></script>
+		<script src="./OutcomeScreen/OutcomeCard.js"></script>
+
+		<script src="./AttackScreen/AttackScreen.js"></script>
+		<script src="./AttackScreen/AttackBody.js"></script>
+		<script src="./AttackScreen/AttackFooter.js"></script>
+		<script src="./AttackScreen/PlayerCard.js"></script>
+
+		<script src="./CharacterSelectionScreen/CharacterSelectionScreen.js"></script>
+		<script src="./CharacterSelectionScreen/CharacterSelectionBody.js"></script>
+		<script src="./CharacterSelectionScreen/CharacterSelectionOption.js"></script>
+
+		<script src="./PauseScreen/PauseScreen.js"></script>
+
+		<script src="./TitleScreen/TitleScreen.js"></script>
+		<script src="./TitleScreen/TitleBody.js"></script>
+
+		<script src="charactersJson.json"></script>
+		<script src="MyGame.js"></script>
+		<script src="Player.js"></script>
+		<script>
+			
+			let x;
+
+			window.onload = () => {
+				x = new MyGame();
+				document.getElementsByTagName("body")[0].appendChild(x.element);
+			};
+
+		</script>
+	</body>
+</html>

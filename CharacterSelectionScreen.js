@@ -1,7 +1,7 @@
 class CharacterSelectionScreen{
 
 	constructor(characters){
-		this.header = new CharacterSelectionHeader();
+		this.header = new Header("Choose Player 1", "character-selection-header");
 		this.body = new CharacterSelectionBody(characters);
 
 		this.element = this.init(this.header, this.body);
@@ -9,13 +9,11 @@ class CharacterSelectionScreen{
 	
 	init(header,body){
 		let main = document.createElement("div");
-		main.id = "characterSelection";
-		main.className = "box";
+		main.id = "character-selection-screen";
+		main.className = "fill-container";
 
 		//use this to display element
 		main.style = "display:none;";
-
-
 
 		main.appendChild(header.element);
 
@@ -25,7 +23,7 @@ class CharacterSelectionScreen{
 	}
 
 	changeHeaderText(x){
-		this.header.changeHeaderText(x);
+		this.header.changeText(x);
 	}
 
 	addCharacterOption(x,y){
@@ -34,6 +32,14 @@ class CharacterSelectionScreen{
 
 	removeCharacterOption(x){
 		this.body.removeCharacterCard(x);
+	}
+
+	show(){
+		this.element.style = "display:flex;";
+	}
+
+	hide(){
+		this.element.style = "display:none;";
 	}
 
 }

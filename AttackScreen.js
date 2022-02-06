@@ -1,9 +1,7 @@
 class AttackScreen{
 
-	static attackScreenLock = 0;
-
 	constructor(){
-		this.header = new AttackHeader();
+		this.header = new Header("TURN: Player 1", "attack-header");
 		this.body = new AttackBody();
 		this.footer = new AttackFooter();
 
@@ -12,8 +10,8 @@ class AttackScreen{
 
 	init(header,body,footer){
 		let main = document.createElement("div");
-		main.id = "two";
-		main.className = "box";
+		main.id = "attack-screen";
+		main.className = "fill-container";
 		main.style = "display:none;";
 
 		main.appendChild(header.element);
@@ -24,11 +22,10 @@ class AttackScreen{
 	}
 
 	changeHeaderText(x){
-		this.header.changeHeaderText(x);
+		this.header.changeText(x);
 	}
 
 	addPlayerCards(players){
-		this.changeHeaderText("TURN: Player 1");
 		for(let player of players){
 			this.body.addPlayer(player);
 		}
@@ -39,6 +36,12 @@ class AttackScreen{
 		}
 	}
 
+	show(){
+		this.element.style = "display:flex;";
+	}
 
+	hide(){
+		this.element.style = "display:none;";
+	}
 
 }

@@ -6,150 +6,165 @@
 			body{
 				margin-top:30px;
 			}
-			.wrapper{
-				width:50%;
+			.fill-container{
+				width:100%;
+				height:100%;
+			}
+			.center-text{
+				text-align: center;
+			}
+			#game-wrapper{
+				max-width:1000px;
 				height:500px;
 				margin:auto;
 				overflow:hidden;
 				border:2px solid black;
 			}
-			.box{
-				width:100%;
-				height:100%;
-			}
-			#one{
-				flex-direction:column;
-				justify-content:center;
-				background-image: url("background1.png");
+
+		/*******   TITLE SCREEN    ************/
+			#title-screen{
+				background-image: url("./images/background1.png");
 				background-size: cover;
-			}
-			.innerbox{
-				width:100%;
-				display:flex;
 				flex-direction:column;
-				text-align:center;
 				justify-content:center;
 			}
-			#oneh1{
-			}
-			#oneh1 p{
+			.title-header{
 				font-size:70px;
 			}
-			#oneh2{
-			}
-			#oneh2 p{
+			.title-sub-header{
 				font-size:32px;
 			}
-			#oneo1{
+			.title-body{
 				margin-top:30px;
 			}
-			#oneo1 button{
+			.title-option-button{
 				font-size:32px;
-				width:60%;
-				margin:auto;
 				border:none;
 				background:none;
+				display: block;
+				margin: auto;
 			}
-			#oneo1 button:hover{
+			.title-option-button:hover{
 				color:red;
 				cursor:pointer;
 			}
-			#two{
-				justify-content:space-around;
-				border:1px solid black;
-				background: url("background2.png");
-				background-size: cover;
-			}
-			.player-box{
-				border: 1px solid black;
-				text-align: center;
-				width:40%;
-			}
-			.player-box img{
-				width:100%;
-			}
-			#characterSelection{
-				background: url("./background4.png");
-				background-size: cover;
-			}
 
+		/*******   CHARACTER SELECTION  SCREEN  *******/
+			#character-selection-screen{
+				background: url("./images/background4.png");
+				background-size: cover;
+				flex-direction: column;
+				justify-content:center;
+			}
 			.character-selection-header{
+				font-size: 32px;
+				font-weight: bolder;
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				width:100%;
-				font-size: 30px;
-				font-weight: bolder;
+				height: 15%;
 			}
 			.character-selection-body{
 				display:flex;
 				justify-content:center;
-				height: 60%;
+				height: 80%;
 			}
-			.playerCard{
+			.player-card{
 				text-align:center;
-				margin:0 10px;
 				border:3px solid black;
+				height: 250px;
+				margin: 0 10px;
 			}
-			.playerCard:hover{
+			.player-card:hover{
 				cursor:pointer;
 				background:yellow;
 			}
-			.playerCard img{
+			.player-card img{
 				width:200px;
 				height:200px;
 			}
-			#player-wrapper{
-				display:flex;
+
+
+
+		/*******   ATTACK SCREEN    *******/
+
+			#attack-screen{
+				background: url("./images/background2.png");
+				background-size: cover;
+				flex-direction: column;
 				justify-content:center;
 			}
-			#options{
+			.attack-header{
+				font-size: 32px;
+				font-weight: bolder;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height:15%;
+			
+			}
+			.attack-body{
 				display:flex;
+				justify-content:center;
+				align-items: center;
+				height: 60%;
+			}
+			.player-box{
+				border: 3px solid black;
+				text-align: center;
+				margin: 0 10px;
+			}
+			.player-box img{
+				width:200px;
+				height: 200px;
+			}
+			.attack-footer{
 				height:20%;
+				display:flex;
 				align-items:center;
 				justify-content:space-around;
 			}
-			.options-button{
+			.attack-option-button{
 				font-size: 20px;
-				width:100%;
+				width:20%;
 				height:50%;
 			}
-			.outcome-header{
-				display: flex;
+
+
+	/******    OUTCOME SCREEN     *********/
+			#outcome-screen{
+				background: url("./images/background3.png");
+				background-size: cover;
 				flex-direction: column;
+				justify-content:center;	
+			}
+			.outcome-header{
+				font-size: 32px;
+				font-weight: bolder;
+				display: flex;
 				justify-content: center;
 				align-items: center;
-				text-align:center;
-				height: 20%;
+				height: 15%;
+			}
+			.outcome-subheader{
+				display: flex;
+				align-items: center;
+				justify-content: space-evenly;
+				height: 10%;
 			}
 			.outcome-body{
 				display: flex;
-				justify-content: space-around;
+				justify-content: space-evenly;
 				height: 70%;
 			}
-			.outcome-body-elements{
+			.outcome-card{
 				width: 45%;
-				border: 2px solid black;
+				border: 3px solid black;
 				text-align: center;
-			}
-			#outcome-header-text{
-				text-align:center;
 			}
 			.outcome-option-button{
 				margin:auto;
 				font-size:24px;
 			}
-			#three{
-				background: url("background3.png");
-				background-size: cover;
-			}
-			.attack-header{
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				width:100%;
-				font-size: 30px;
-				font-weight: bolder;
 			
-			}
 		

@@ -4,9 +4,9 @@ class OutcomeCard{
 	}
 
 	init(player){
-		console.log(player);
 		let main = document.createElement("div");
-		main.className = "outcome-body-elements";
+		main.id = player.name;
+		main.className = "outcome-card";
 
 		let text = document.createElement("h1");
 		text.innerText = player.name;
@@ -21,5 +21,9 @@ class OutcomeCard{
 		main.appendChild(text);
 
 		return main;
+	}
+
+	remove(){
+		this.element = null;
 	}
 }

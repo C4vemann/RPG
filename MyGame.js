@@ -36,7 +36,7 @@ class MyGame{
 
 	init(){
 		var main = document.createElement("div");
-		main.className = "wrapper";
+		main.id = "game-wrapper";
 
 		main.appendChild(MyGame.titleScreen.element);
 		main.appendChild(MyGame.characterSelectionScreen.element);
@@ -56,6 +56,7 @@ class MyGame{
 		} else if(state == MyGame.states[1]){
 			if(MyGame.playerCount != 0){
 				MyGame.attackScreen.removePlayerCards(MyGame.players);
+				MyGame.outcomeScreen.removeOutcomeCards(MyGame.players);
 				MyGame.players = [];
 				MyGame.playerCount = 0;
 			}
@@ -67,14 +68,14 @@ class MyGame{
 			MyGame.currentScreen.changeHeaderText("Choose Player " + (MyGame.playerCount+1));
 
 
-			MyGame.currentScreen.element.style = "display:block;";
+			MyGame.currentScreen.element.style = "display:flex;";
 		} else if(state == MyGame.states[2]){
 			MyGame.currentState = state;
 			MyGame.currentScreen.element.style = "display:none;";
 			MyGame.currentScreen = MyGame.attackScreen;
 			MyGame.currentScreen.addPlayerCards(MyGame.players);
 
-			MyGame.currentScreen.element.style = "display:block;";
+			MyGame.currentScreen.element.style = "display:flex;";
 		} else if(state == MyGame.states[3]){
 			/*MyGame.currentState = state;
 			MyGame.currentScreen.element.style = "display:none;";
@@ -84,9 +85,8 @@ class MyGame{
 			MyGame.currentState = state;
 			MyGame.currentScreen.element.style = "display:none;";
 			MyGame.currentScreen = MyGame.outcomeScreen;
-			MyGame.currentScreen.resetOutcome();
-			MyGame.currentScreen.setOutcome(MyGame.players);
-			MyGame.currentScreen.element.style = "display:block;";
+			MyGame.currentScreen.addOutcomeCards(MyGame.players);
+			MyGame.currentScreen.element.style = "display:flex;";
 		} else{
 		}
 	}

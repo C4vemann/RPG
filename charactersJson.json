@@ -1,14 +1,14 @@
 characters = [
 	{
 		name:"Anthony",
-		image:"./Anthony.png",
+		image:"./images/Anthony.png",
 	},
 	{
 		name:"Tyler",
-		image:"./Tyler.png",
+		image:"./images/Tyler.png",
 	},
 	{
 		name:"Ron",
-		image:"./Ron.png",
+		image:"./images/Ron.png",
 	}
 ];

@@ -5,42 +5,15 @@ class AttackFooter{
 
 	init(){
 		let main = document.createElement("div");
-		main.id = "options";
+		main.className = "attack-footer";
 
-		let sub = document.createElement("button");
-		sub.id = "attack-button";
-		sub.className = "options-button";
-		sub.innerText = "ATTACK";
-		sub.onclick = () => {
-			MyGame.players[0].attacking(MyGame.players[1]);
-		};
+		main.appendChild(new AttackButton("ATTACK", "attack-option-button").element);
 
-		main.appendChild(sub);
+		main.appendChild(new ItemButton("ITEMS", "attack-option-button").element);
 
-		sub = document.createElement("button");
-		sub.id = "items-button";
-		sub.className = "options-button";
-		sub.innerText = "ITEMS";
+		main.appendChild(new RunButton("RUN", "attack-option-button").element);
 
-		main.appendChild(sub);
-
-		sub = document.createElement("button");
-		sub.id = "run-button";
-		sub.className = "options-button";
-		sub.innerText = "RUN";
-
-		main.appendChild(sub);
-
-		sub = document.createElement("button");
-		sub.id = "pause-button";
-		sub.className = "options-button";
-		sub.innerText = "PAUSE";
-		sub.onclick = () => {
-			console.log("Coming Soon");
-			MyGame.changeState("WAITING");
-		};
-
-		main.appendChild(sub);
+		main.appendChild(new PauseButton("PAUSE", "attack-option-button").element);
 
 
 		return main;

@@ -1,18 +1,20 @@
 class OutcomeScreen{
 	constructor(){
 		this.header = new OutcomeHeader();
+		this.subheader = new OutcomeSubHeader();
 		this.body = new OutcomeBody();
 
-		this.element = this.init(this.header,this.body);
+		this.element = this.init(this.header,this.subheader,this.body);
 	}
  
-	init(header,body){
+	init(header,subheader,body){
 		let main = document.createElement("div");
-		main.id = "three";
-		main.className = "box";
+		main.id = "outcome-screen";
+		main.className = "fill-container";
 		main.style = "display:none;";
 
 		main.appendChild(header.element);
+		main.appendChild(subheader.element);
 		main.appendChild(body.element);
 
 		return main;
@@ -25,22 +27,21 @@ class OutcomeScreen{
 	addOutcomeCards(players){
 		this.changeHeaderText("Player 1 Winner");
 		for(let player of players){
-			this.body.addPlayer(player);
+			this.body.addOutcomeCard(player);
 		}
 	}
 
 	removeOutcomeCards(players){
 		for(let player of players){
-			this.body.removePlayerCard(player);
+			this.body.removeOutcomeCard(player);
 		}
 	}
 
-
-	initBody(){
-		let main = document.createElement("div");
-		main.className = "outcome-body";
-			
-		return main;
+	show(){
+		this.element.style = "display:flex;";
 	}
 
+	hide(){
+		this.element.style = "display:none;";
+	}
 }

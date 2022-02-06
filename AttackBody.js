@@ -6,10 +6,9 @@ class AttackBody{
 	init(players){
 
 		let main = document.createElement("div");
-		main.id = "player-wrapper";
+		main.className = "attack-body";
 
 		for(let player of players){
-			console.log(player);
 			main.appendChild(player.element);
 		}
 
