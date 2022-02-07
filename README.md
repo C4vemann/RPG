@@ -1,2 +1,3 @@
 # RPG
-now i think i can add the player turn functionality
+Basically finished the game
+Look over code analyze it see what can be improved
