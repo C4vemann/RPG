@@ -75,6 +75,14 @@
 				height: 250px;
 				margin: 0 10px;
 			}
+			.player-name{
+				font-size: 32px;
+				font-weight: bold;
+			}
+			.player-health{
+				font-size: 28px;
+				font-weight: bold;
+			}
 			.player-card:hover{
 				cursor:pointer;
 				background:yellow;
@@ -100,7 +108,16 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				height:15%;
+				height:10%;
+			
+			}
+			.attack-sub-header{
+				font-size: 30px;
+				font-weight: bold;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height:10%;
 			
 			}
 			.attack-body{

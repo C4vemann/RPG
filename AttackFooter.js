@@ -13,7 +13,7 @@ class AttackFooter{
 
 		main.appendChild(new RunButton("RUN", "attack-option-button").element);
 
-		main.appendChild(new PauseButton("PAUSE", "attack-option-button").element);
+		main.appendChild(new PauseButton("AUTO", "attack-option-button").element);
 
 
 		return main;

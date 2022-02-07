@@ -8,7 +8,7 @@ class RunButton{
 		main.innerText = text;
 
 		main.onclick = () => {
-			console.error("Run Button: Not Defined Yet");
+			MyGame.players[MyGame.currentTurn].end();
 		};
 
 		return main;

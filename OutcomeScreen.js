@@ -1,6 +1,6 @@
 class OutcomeScreen{
 	constructor(){
-		this.header = new Header("Player 1 Wins", "outcome-header");
+		this.header = new Header("", "outcome-header");
 		this.subheader = new OutcomeSubHeader();
 		this.body = new OutcomeBody();
 
@@ -25,7 +25,6 @@ class OutcomeScreen{
 	}
 
 	addOutcomeCards(players){
-		this.changeHeaderText("Player 1 Winner");
 		for(let player of players){
 			this.body.addOutcomeCard(player);
 		}

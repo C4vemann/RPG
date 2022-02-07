@@ -8,7 +8,9 @@ class AttackButton{
 		main.innerText = text;
 
 		main.onclick = () => {
-			MyGame.players[0].attacking(MyGame.players[1]);
+			MyGame.players[MyGame.currentTurn].attack(MyGame.players[(MyGame.currentTurn + 1)%MyGame.playerLimit]);
+			MyGame.setCurrentTurn();
+			
 		};
 
 		return main;

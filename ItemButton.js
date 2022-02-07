@@ -8,7 +8,8 @@ class ItemButton{
 		main.innerText = text;
 
 		main.onclick = () => {
-			console.error("Item Button: Not Defined Yet");
+			MyGame.players[MyGame.currentTurn].heal();
+			MyGame.setCurrentTurn();
 		};
 
 		return main;

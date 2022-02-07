@@ -1,32 +1,44 @@
 class PlayerCard{
-	constructor(name,pic,health){
-		this.element = this.init(name,pic,health);
+
+	constructor(name,health,pic){
+		this.name = new Header(name, "player-name");
+		this.health = new Header(health + " / 100", "player-health");
+		this.image = new Image(pic, "player-pic");
+
+		this.element = this.init(this.name,this.health,this.image);
 	}
 
-	init(name,pic,health){
+	init(name,health,image){
 		let main = document.createElement("div");
 		main.id = name;
 		main.className = "player-box";
 
-		let text = document.createElement("h1");
-		text.className = "player-name";
-		text.innerText = name;
-		main.appendChild(text);
-
-		text = document.createElement("h2");
-		text.className = "player-health";
-		text.innerText = health + "/ 100";
-		main.appendChild(text);
-
-		text = document.createElement("img");
-		text.className = "player-pic";
-		text.src = pic;
-		main.appendChild(text);
+		main.appendChild(name.element);
+		main.appendChild(health.element);
+		main.appendChild(image.element);
 
 		return main;
 	}
 
 	remove(){
 		this.element = null;
+	}
+
+	updatePlayerCard(name,health,src){
+		this.changePlayerName(name);
+		this.changePlayerHealth(health);
+		this.changePlayerImage(src);
+	}
+
+	changePlayerName(name){
+		this.name.changeText(name);
+	}
+
+	changePlayerHealth(health){
+		this.health.changeText(health + " / 100");
+	}
+
+	changePlayerImage(src){
+		this.image.changeSource(src);
 	}
 }

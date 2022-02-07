@@ -20,6 +20,15 @@ class OutcomeCard{
 		text.innerText = "Misses: " + player.misses + "/" + (player.hits + player.misses);
 		main.appendChild(text);
 
+		text = document.createElement("h2");
+		text.innerText = "Potions Used: " + player.potionsUsed;
+		main.appendChild(text);
+
+		text = document.createElement("h2");
+		text.innerText = "Max Hit: " + player.maxHit;
+		main.appendChild(text);
+
+
 		return main;
 	}
 
