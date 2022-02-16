@@ -2,51 +2,114 @@ class StateArray{
 	constructor(){
 		this.states = [];
 		this.top = 0;
+		this.current = 0;
 	}
+
 	addState(state){
 		this.states[this.top] = state;
 		this.top++;
+		return 1;
 	}
+
+	changeToStateByIndex(index){
+		if(this.top != 0){
+			this.states[this.current].hide();
+			this.current = index;
+			this.states[this.current].show();
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
+	changeToStateByName(name){
+		if(this.top != 0){
+			for(var i = 0; i <= this.top; i++){
+				if(i == this.top){
+					return 0;
+				}
+				if(this.states[i] == name){
+					this.states[i].hide();
+					this.current = i;
+					this.states[this.current].show();
+					return 1;
+				}
+			}
+			return 1;
+		} else{
+			return 0;
+		}
+	}
+
+	nextState(){
+		this.current++;
+	}
+
+	previousState(){
+		this.current--;
+	}
+
+	replaceStateByIndex(index, state){
+		if(this.top != 0){
+			this.states[index] = state;	
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
+	replaceStateByName(name, state){
+		if(this.top != 0){
+			for(var i = 0; i <= this.top; i++){
+				if(i == this.top){
+					return 0;
+				}
+				if(this.states[i] == name){
+					this.states[i] = state;
+					return 1;
+				}
+			}
+		} else {
+			return 0;
+		}
+	}
+
 	removeStateByIndex(index){
 		if(this.top != 0){
 			if(index >= this.top){
-				console.error("INDEX SELECTED IS NOT POSSIBLE");
-				return "INDEX SELECTED IS NOT POSSIBLE";
+				return 0;
 			} else {
 				for(var i = index; i < this.top; i++){
 					this.states[i] = this.states[i+1];
 				}
+
 				this.top--;
+				return 1;
 			}
-			return "Index: " + index + " has been removed";	
 		} else {
-			console.log("THERE IS NOTHING IN THE ARRAY TO DELETE");
-			return "THERE IS NOTHING IN THE ARRAY TO DELETE";
+			return 0;
 		}
 	}
 
 	removeStateByName(name){
-		let pointer = 0;
+		let gate = false;
 		if(this.top != 0){
 			for(var i = 0; i <= this.top; i++){
 				if(i == this.top){
-					console.error("NAME SELECTED IS NOT POSSIBLE");
-					return "NAME SELECTED IS NOT POSSIBLE";
+					return 0;
 				}
 				if(name == this.states[i]){
-					pointer = i;
-					break;
+					gate = true;
+				}
+				if(gate){
+					this.states[i] = this.states[i+1];				
 				}
 			}
 
-			for(var i = pointer; i < this.top; i++){
-				this.states[i] = this.states[i+1];
-			}
 			this.top--;
-			return "Name: " + name + " has been removed";
+			return 1;
 		} else {
-			console.log("THERE IS NOTHING IN THE ARRAY TO DELETE");
-			return "THERE IS NOTHING IN THE ARRAY TO DELETE";
+			return 0;
 		}
 	}
 
