@@ -42,11 +42,21 @@ class StateArray{
 	}
 
 	nextState(){
-		this.current++;
+		if(this.current != this.top){
+			this.current++;
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 	previousState(){
-		this.current--;
+		if(this.top != 0){
+			this.current--;
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 	replaceStateByIndex(index, state){
