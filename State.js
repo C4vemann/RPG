@@ -6,11 +6,11 @@ class State{
 	}
 
 	hide(){
-		console.log("hide");
+		this.screen.hide();
 	}
 
 	show(){
-		console.log("show");
+		this.screen.show();
 	}
 	
 	/*changeState(){

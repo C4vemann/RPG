@@ -5,8 +5,8 @@ class StateArray{
 		this.current = 0;
 	}
 
-	addState(state){
-		this.states[this.top] = state;
+	addState(name, state){
+		this.states[this.top] = new State(name, state);
 		this.top++;
 		return 1;
 	}
@@ -28,7 +28,7 @@ class StateArray{
 				if(i == this.top){
 					return 0;
 				}
-				if(this.states[i] == name){
+				if(this.states[i].name == name){
 					this.states[i].hide();
 					this.current = i;
 					this.states[this.current].show();

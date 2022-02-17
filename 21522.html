@@ -3,14 +3,25 @@
 	<head>
 	</head>
 	<body>
+		<script src="OptionButton.js"></script>
+		<script src="PlayButton.js"></script>
+		<script src="charactersJson.json"></script>
+		<script src="CharacterSelectionScreen.js"></script>
+		<script src="CharacterSelectionOption.js"></script>
+		<script src="CharacterSelectionBody.js"></script>
+		<script src="CharacterSelectionHeader.js"></script>
+		<script src="TitleScreen.js"></script>
+		<script src="TitleBody.js"></script>
+		<script src="Header.js"></script>
+		<script src="Text.js"></script>
+		<script src="State.js"></script>
 		<script src="StateArray.js"></script>
 		<script>
 			let x = new StateArray();
-			x.addState("First");
-			x.addState("Second");
-			x.addState("Third");
-			x.addState("Fourth");
-			x.addState("Fifth");
+			x.addState("TITLE", new TitleScreen());
+			x.addState("CHARACTER SELECTION", new CharacterSelectionScreen(characters));
+			document.getElementsByTagName("body")[0].appendChild(x.states[0].screen.element)
+			document.getElementsByTagName("body")[0].appendChild(x.states[1].screen.element)
 		</script>
 	</body>
 </html>
