@@ -2,22 +2,13 @@
 
 class MyGame{
 
-	static states = ["NEW","READY","RUNNING","WAITING","TERMINATED"];
-	
-	static currentState;
-	static currentScreen;
+	static stateArray;
 
 	static currentRound;
 	static currentTurn;
 
 	static players;
 	static playerLimit;
-
-	static titleScreen;
-	static characterSelectionScreen;
-	static attackScreen;
-	static outcomeScreen;
-	static pauseScreen;
 
 	static interval;
 	static running;
@@ -26,34 +17,31 @@ class MyGame{
 		MyGame.players = [];
 		MyGame.playerCount = 0;
 		MyGame.playerLimit = 2;
-		MyGame.currentState = MyGame.states[0];
 
-		MyGame.titleScreen = new TitleScreen();
-		MyGame.characterSelectionScreen = new CharacterSelectionScreen(characters);
-		MyGame.attackScreen = new AttackScreen();
-		MyGame.outcomeScreen = new OutcomeScreen();
-		MyGame.pauseScreen = new PauseScreen();
+		MyGame.stateArray = new StateArray();
+		MyGame.stateArray.addState("NEW",new TitleScreen());
+		MyGame.stateArray.addState("READY",new CharacterSelectionScreen(characters));
+		MyGame.stateArray.addState("RUNNING",new AttackScreen());
+		MyGame.stateArray.addState("WAITING",new PauseScreen());
+		MyGame.stateArray.addState("TERMINATED",new OutcomeScreen());
 
-		MyGame.currentScreen = MyGame.titleScreen;
 		MyGame.running = 0;
 
-		this.element = this.init();
+		this.element = this.init(MyGame.stateArray);
 	}
 
-	init(){
+	init(stateArray){
 		var main = document.createElement("div");
 		main.id = "game-wrapper";
 
-		main.appendChild(MyGame.titleScreen.element);
-		main.appendChild(MyGame.characterSelectionScreen.element);
-		main.appendChild(MyGame.attackScreen.element);
-		main.appendChild(MyGame.outcomeScreen.element);
-		main.appendChild(MyGame.pauseScreen.element);
-
+		for(let state of stateArray.states){
+			main.appendChild(state.screen.element);
+		}
+		
 		return main;
 	}
 
-	static changeState(state){
+	/*static changeState(state){
 		if(state == MyGame.states[0]){
 			MyGame.currentState = state;
 			MyGame.currentScreen.hide();
@@ -99,14 +87,14 @@ class MyGame{
 		} else{
 		}
 	}
-
+	
 	static setCurrentTurn(){
 		MyGame.currentRound++;
 		MyGame.currentTurn = MyGame.currentRound%MyGame.playerLimit;
 		MyGame.attackScreen.changeSubHeaderText("TURN: Player " + (MyGame.currentTurn + 1));
 		MyGame.attackScreen.updatePlayer1Card(MyGame.players[0].name,MyGame.players[0].health,MyGame.players[0].pic);
 		MyGame.attackScreen.updatePlayer2Card(MyGame.players[1].name,MyGame.players[1].health,MyGame.players[1].pic);
-	}
+	}*/
 
 
 }

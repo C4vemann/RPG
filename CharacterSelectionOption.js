@@ -11,12 +11,14 @@ class CharacterSelectionOption{
 
 		card.onclick = () => {
 			if(MyGame.playersCount != MyGame.playerLimit){
+				console.log(this.id);
 				MyGame.players[MyGame.playerCount] = new Player(Player.lookup(this.element.id,characters));
 				MyGame.playerCount++;
 				if(MyGame.playerCount == MyGame.playerLimit){
-					MyGame.changeState("RUNNING");
-				} 
-				MyGame.characterSelectionScreen.changeHeaderText("Choose Player " + (MyGame.playerCount + 1));
+					MyGame.stateArray.changeToStateByIndex(2);
+				} else{
+					MyGame.stateArray.states[MyGame.stateArray.current].screen.changeHeaderText("Choose Player " + (MyGame.playerCount + 1));
+				}
 			}
 		};
 

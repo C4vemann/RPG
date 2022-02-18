@@ -8,7 +8,7 @@ class PlayButton{
 		main.innerText = text;
 
 		main.onclick = () => {
-			MyGame.changeState("READY");
+			MyGame.stateArray.changeToStateByIndex(1);
 		};
 
 		return main;

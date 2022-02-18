@@ -8,7 +8,7 @@ class MainMenuButton{
 		main.innerText = text;
 
 		main.onclick = () => {
-			MyGame.changeState("NEW");
+			MyGame.stateArray.changeToStateByIndex(0);
 		};
 
 		return main;

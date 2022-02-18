@@ -23,7 +23,7 @@
 
 		/*******   TITLE SCREEN    ************/
 			#title-screen{
-				background-image: url("./images/background1.png");
+				background-image: url("background1.png");
 				background-size: cover;
 				flex-direction:column;
 				justify-content:center;
@@ -51,7 +51,7 @@
 
 		/*******   CHARACTER SELECTION  SCREEN  *******/
 			#character-selection-screen{
-				background: url("./images/background4.png");
+				background: url("background4.png");
 				background-size: cover;
 				flex-direction: column;
 				justify-content:center;
@@ -97,7 +97,7 @@
 		/*******   ATTACK SCREEN    *******/
 
 			#attack-screen{
-				background: url("./images/background2.png");
+				background: url("background2.png");
 				background-size: cover;
 				flex-direction: column;
 				justify-content:center;
@@ -150,7 +150,7 @@
 
 	/******    OUTCOME SCREEN     *********/
 			#outcome-screen{
-				background: url("./images/background3.png");
+				background: url("background3.png");
 				background-size: cover;
 				flex-direction: column;
 				justify-content:center;	
