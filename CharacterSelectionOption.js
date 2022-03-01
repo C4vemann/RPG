@@ -16,6 +16,8 @@ class CharacterSelectionOption{
 				MyGame.playerCount++;
 				if(MyGame.playerCount == MyGame.playerLimit){
 					MyGame.stateArray.changeToStateByIndex(2);
+					MyGame.stateArray.states[MyGame.stateArray.current].screen.updatePlayer1Card(MyGame.players[0].name,MyGame.players[0].health,MyGame.players[0].pic);
+					MyGame.stateArray.states[MyGame.stateArray.current].screen.updatePlayer2Card(MyGame.players[1].name,MyGame.players[1].health,MyGame.players[1].pic);
 				} else{
 					MyGame.stateArray.states[MyGame.stateArray.current].screen.changeHeaderText("Choose Player " + (MyGame.playerCount + 1));
 				}
@@ -32,8 +34,6 @@ class CharacterSelectionOption{
 		el.src = y;
 		el.alt = x;
 		card.appendChild(el);
-
-		
 		
 		return card;
 	}

@@ -31,14 +31,14 @@ class Player{
 
 		if(player.health <= 0){
 			MyGame.loser = player.name;
-			MyGame.changeState("TERMINATED");
+			MyGame.stateArray.changeToStateByIndex(4);
 			MyGame.currentScreen.changeHeaderText(player.name + " DIED");
 			if(MyGame.interval != null){
 				clearInterval(MyGame.interval);
 			}
 		} 
 
-		MyGame.attackScreen.changeHeaderText(this.name + " HIT " + player.name + " FOR " + hit + " DAMAGE");
+		MyGame.stateArray.states[MyGame.stateArray.current].screen.changeHeaderText(this.name + " HIT " + player.name + " FOR " + hit + " DAMAGE");
 	}
 
 	heal(){
@@ -49,18 +49,18 @@ class Player{
 			this.health = 100;
 		}
 
-		MyGame.attackScreen.changeHeaderText(this.name + " REVIVED 10 HEALTH");
+		MyGame.stateArray.states[MyGame.stateArray.current].screen.changeHeaderText(this.name + " REVIVED 10 HEALTH");
 		
 	}
 
 	end(){
-		MyGame.changeState("TERMINATED");
-		MyGame.currentScreen.changeHeaderText(this.name + " RAN");
+		MyGame.stateArray.changeToStateByIndex(4);
+		MyGame.stateArray.states[MyGame.stateArray.current].screen.changeHeaderText(this.name + " RAN");
 		if(MyGame.interval != null){
 			clearInterval(MyGame.interval);
 		}
 
-		MyGame.attackScreen.changeHeaderText(this.name + " RAN LIKE A COWARD");
+		MyGame.stateArray.states[MyGame.stateArray.current].screen.changeHeaderText(this.name + " RAN LIKE A COWARD");
 	}
 
 	static lookup(c,chs){

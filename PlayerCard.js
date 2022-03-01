@@ -10,7 +10,9 @@ class PlayerCard{
 
 	init(name,health,image){
 		let main = document.createElement("div");
-		main.id = name;
+		console.log(name);
+		console.log(name.text.element.innerText);
+		main.id = name.text.element.innerText;
 		main.className = "player-box";
 
 		main.appendChild(name.element);
@@ -25,9 +27,15 @@ class PlayerCard{
 	}
 
 	updatePlayerCard(name,health,src){
+		this.changeId(name);
 		this.changePlayerName(name);
 		this.changePlayerHealth(health);
 		this.changePlayerImage(src);
+	}
+
+	changeId(name){
+		console.log(this.element.id);
+		this.element.id = name;
 	}
 
 	changePlayerName(name){

@@ -8,6 +8,7 @@ class MyGame{
 	static currentTurn;
 
 	static players;
+	static playerCount;
 	static playerLimit;
 
 	static interval;
@@ -26,6 +27,9 @@ class MyGame{
 		MyGame.stateArray.addState("TERMINATED",new OutcomeScreen());
 
 		MyGame.running = 0;
+
+		MyGame.currentRound = 0;
+		MyGame.currentTurn = 0;
 
 		this.element = this.init(MyGame.stateArray);
 	}
@@ -87,14 +91,14 @@ class MyGame{
 		} else{
 		}
 	}
-	
+	*/
 	static setCurrentTurn(){
 		MyGame.currentRound++;
 		MyGame.currentTurn = MyGame.currentRound%MyGame.playerLimit;
-		MyGame.attackScreen.changeSubHeaderText("TURN: Player " + (MyGame.currentTurn + 1));
-		MyGame.attackScreen.updatePlayer1Card(MyGame.players[0].name,MyGame.players[0].health,MyGame.players[0].pic);
-		MyGame.attackScreen.updatePlayer2Card(MyGame.players[1].name,MyGame.players[1].health,MyGame.players[1].pic);
-	}*/
+		MyGame.stateArray.states[MyGame.stateArray.current].screen.changeSubHeaderText("TURN: Player " + (MyGame.currentTurn + 1));
+		MyGame.stateArray.states[MyGame.stateArray.current].screen.updatePlayer1Card(MyGame.players[0].name,MyGame.players[0].health,MyGame.players[0].pic);
+		MyGame.stateArray.states[MyGame.stateArray.current].screen.updatePlayer2Card(MyGame.players[1].name,MyGame.players[1].health,MyGame.players[1].pic);
+	}
 
 
 }
